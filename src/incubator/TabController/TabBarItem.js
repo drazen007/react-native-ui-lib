@@ -105,12 +105,14 @@ export default class TabBarItem extends PureComponent {
     itemWidth: undefined
   };
 
-  onStateChange = event([
-    {
-      nativeEvent: {state: this.props.state}
-    }
-  ],
-  {useNativeDriver: true},);
+  onStateChange = event(
+    [
+      {
+        nativeEvent: {state: this.props.state}
+      }
+    ],
+    {useNativeDriver: true}
+  );
 
   onLayout = ({
     nativeEvent: {
@@ -157,9 +159,11 @@ export default class TabBarItem extends PureComponent {
     const fontWeight = cond(and(eq(currentPage, index), defined(itemWidth)), '700', '400');
     const activeColor = selectedLabelColor || DEFAULT_SELECTED_LABEL_COLOR;
     const inactiveColor = labelColor || DEFAULT_LABEL_COLOR;
-    const color = cond(eq(currentPage, index),
+    const color = cond(
+      eq(currentPage, index),
       processColor(activeColor),
-      processColor(ignore ? activeColor : inactiveColor),);
+      processColor(ignore ? activeColor : inactiveColor)
+    );
 
     return [
       {
@@ -176,11 +180,13 @@ export default class TabBarItem extends PureComponent {
     const activeColor = selectedIconColor || selectedLabelColor || DEFAULT_SELECTED_LABEL_COLOR;
     const inactiveColor = iconColor || labelColor || DEFAULT_LABEL_COLOR;
 
-    const tintColor = cond(eq(currentPage, index),
+    const tintColor = cond(
+      eq(currentPage, index),
       // TODO: using processColor here broke functionality,
       // not using it seem to not be very performant
       activeColor,
-      ignore ? activeColor : inactiveColor,);
+      ignore ? activeColor : inactiveColor
+    );
 
     return {
       tintColor
@@ -189,6 +195,7 @@ export default class TabBarItem extends PureComponent {
 
   render() {
     const {label, icon, badge, state, uppercase, activeOpacity, activeBackgroundColor, testID} = this.props;
+    console.log('state', state);
 
     return (
       <TouchableOpacity
@@ -200,13 +207,13 @@ export default class TabBarItem extends PureComponent {
         onPress={this.onPress}
         testID={testID}
       >
-        {icon && <Reanimated.Image source={icon} style={[styles.tabItemIcon, this.getIconStyle()]}/>}
+        {icon && <Reanimated.Image source={icon} style={[styles.tabItemIcon, this.getIconStyle()]} />}
         {!_.isEmpty(label) && (
           <Reanimated.Text style={[styles.tabItemLabel, this.getLabelStyle()]}>
             {uppercase ? _.toUpper(label) : label}
           </Reanimated.Text>
         )}
-        {badge && <Badge backgroundColor={Colors.red30} size={'default'} {...badge} containerStyle={styles.badge}/>}
+        {badge && <Badge backgroundColor={Colors.red30} size={'default'} {...badge} containerStyle={styles.badge} />}
       </TouchableOpacity>
     );
   }

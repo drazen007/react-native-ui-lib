@@ -119,13 +119,14 @@ export default class TabBarItem extends PureComponent {
     }
   }
 
-
-  onStateChange = event([
-    {
-      nativeEvent: {state: this.props.state}
-    }
-  ],
-  {useNativeDriver: true});
+  onStateChange = event(
+    [
+      {
+        nativeEvent: {state: this.props.state}
+      }
+    ],
+    {useNativeDriver: true}
+  );
 
   onLayout = ({
     nativeEvent: {
@@ -175,21 +176,27 @@ export default class TabBarItem extends PureComponent {
     let fontWeight, letterSpacing, fontFamily;
 
     if (labelStyle.fontWeight || selectedLabelStyle.fontWeight) {
-      fontWeight = cond(and(eq(targetPage, index) /* , defined(itemWidth) */),
+      fontWeight = cond(
+        and(eq(targetPage, index) /* , defined(itemWidth) */),
         selectedLabelStyle.fontWeight || 'normal',
-        labelStyle.fontWeight || 'normal');
+        labelStyle.fontWeight || 'normal'
+      );
     }
 
     if (labelStyle.letterSpacing || selectedLabelStyle.letterSpacing) {
-      letterSpacing = cond(and(eq(targetPage, index) /* , defined(itemWidth) */),
+      letterSpacing = cond(
+        and(eq(targetPage, index) /* , defined(itemWidth) */),
         selectedLabelStyle.letterSpacing || 0,
-        labelStyle.letterSpacing || 0);
+        labelStyle.letterSpacing || 0
+      );
     }
 
     if (labelStyle.fontFamily || selectedLabelStyle.fontFamily) {
-      fontFamily = cond(and(eq(targetPage, index) /* , defined(itemWidth) */),
+      fontFamily = cond(
+        and(eq(targetPage, index) /* , defined(itemWidth) */),
         selectedLabelStyle.fontFamily,
-        labelStyle.fontFamily);
+        labelStyle.fontFamily
+      );
     }
 
     const inactiveColor = labelColor || DEFAULT_LABEL_COLOR;
@@ -203,13 +210,15 @@ export default class TabBarItem extends PureComponent {
 
     return [
       labelStyle,
-      _.omitBy({
-        fontFamily,
-        fontWeight,
-        letterSpacing,
-        color
-      },
-      _.isUndefined)
+      _.omitBy(
+        {
+          fontFamily,
+          fontWeight,
+          letterSpacing,
+          color
+        },
+        _.isUndefined
+      )
     ];
   }
 
@@ -219,11 +228,13 @@ export default class TabBarItem extends PureComponent {
     const activeColor = selectedIconColor || selectedLabelColor || DEFAULT_SELECTED_LABEL_COLOR;
     const inactiveColor = iconColor || labelColor || DEFAULT_LABEL_COLOR;
 
-    const tintColor = cond(eq(currentPage, index),
+    const tintColor = cond(
+      eq(currentPage, index),
       // TODO: using processColor here broke functionality,
       // not using it seem to not be very performant
       activeColor,
-      ignore ? activeColor : inactiveColor);
+      ignore ? activeColor : inactiveColor
+    );
 
     return {
       tintColor
@@ -244,13 +255,13 @@ export default class TabBarItem extends PureComponent {
         onPress={this.onPress}
         testID={testID}
       >
-        {icon && <Reanimated.Image source={icon} style={[label && styles.tabItemIconWithLabel, this.getIconStyle()]}/>}
+        {icon && <Reanimated.Image source={icon} style={[label && styles.tabItemIconWithLabel, this.getIconStyle()]} />}
         {!_.isEmpty(label) && (
           <Reanimated.Text style={[styles.tabItemLabel, this.getLabelStyle()]}>
             {uppercase ? _.toUpper(label) : label}
           </Reanimated.Text>
         )}
-        {badge && <Badge backgroundColor={Colors.red30} size={'default'} {...badge} containerStyle={styles.badge}/>}
+        {badge && <Badge backgroundColor={Colors.red30} size={'default'} {...badge} containerStyle={styles.badge} />}
       </TouchableOpacity>
     );
   }

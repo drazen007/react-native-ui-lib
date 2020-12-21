@@ -410,6 +410,7 @@ class TabBar extends PureComponent {
 
   render() {
     const {height, containerStyle, testID, backgroundColor} = this.props;
+
     const {itemsWidths, scrollEnabled, fadeLeft, fadeRight} = this.state;
     return (
       <View style={[styles.container, this.getShadowStyle(), {width: this.containerWidth}, containerStyle]}>
@@ -425,9 +426,8 @@ class TabBar extends PureComponent {
           snapToOffsets={this.getSnapBreakpoints()}
           decelerationRate={'fast'}
         >
-          <View style={[styles.tabBar, height && {height}, {paddingHorizontal: this.centerOffset, backgroundColor}]}>
-            {this.renderTabBarItems()}
-          </View>
+          {/* <View style={[styles.tabBar, height && {height}, {paddingHorizontal: this.centerOffset, backgroundColor}]}> */}
+          <View style={styles.tabBar}>{this.renderTabBarItems()}</View>
           {this.renderSelectedIndicator()}
         </ScrollView>
         {_.size(itemsWidths) > 1 && <Code>{this.renderCodeBlock}</Code>}
@@ -447,8 +447,7 @@ const styles = StyleSheet.create({
     height: DEFAULT_HEIGHT,
     flexDirection: 'row',
     // justifyContent: 'space-between'
-    justifyContent: 'flex-start',
-    backgroundColor: 'red'
+    justifyContent: 'flex-start'
   },
   tabBarScrollContent: {
     minWidth: Constants.screenWidth
