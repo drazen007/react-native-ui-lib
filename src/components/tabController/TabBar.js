@@ -19,7 +19,9 @@ import {LogService} from '../../services';
 const {Code, Value, interpolate, block, set} = Reanimated;
 
 const DEFAULT_HEIGHT = 48;
-const INDICATOR_INSET = Spacings.s4;
+// const INDICATOR_INSET = Spacings.s4;
+const INDICATOR_INSET = 6;
+
 const DEFAULT_BACKGROUND_COLOR = Colors.white;
 
 const DEFAULT_LABEL_STYLE = {
@@ -135,7 +137,8 @@ class TabBar extends PureComponent {
     this.tabBarScrollOffset = 0;
 
     this._itemsWidths = _.times(itemsCount, () => null);
-    this._itemsOffsets = _.times(itemsCount, () => null);
+    // this._itemsOffsets = _.times(itemsCount, () => null);
+    this._itemsOffsets = -2;
     this._indicatorOffset = new Value(0);
     this._indicatorWidth = new Value(0);
 
