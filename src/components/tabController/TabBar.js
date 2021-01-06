@@ -140,7 +140,8 @@ class TabBar extends PureComponent {
     this._indicatorWidth = new Value(0);
 
     this._indicatorTransitionStyle = {
-      width: this._indicatorWidth,
+      // width: this._indicatorWidth,
+      width: 90,
       left: this._indicatorOffset
     };
 
@@ -447,7 +448,8 @@ const styles = StyleSheet.create({
     height: DEFAULT_HEIGHT,
     flexDirection: 'row',
     // justifyContent: 'space-between'
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    width: 300
   },
   tabBarScrollContent: {
     minWidth: Constants.screenWidth
@@ -461,7 +463,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
-    width: 70,
+    // width: 70,
+    width: 90,
     height: 2,
     backgroundColor: Colors.blue30
   },
