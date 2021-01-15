@@ -454,7 +454,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // justifyContent: 'space-between'
     justifyContent: 'flex-start',
-    width: 300
+    width: 350
   },
   tabBarScrollContent: {
     minWidth: Constants.screenWidth
