@@ -18,7 +18,7 @@ import {LogService} from '../../services';
 
 const {Code, Value, interpolate, block, set} = Reanimated;
 
-const DEFAULT_PILL_WIDTH = 90;
+const DEFAULT_PILL_WIDTH = 92;
 const DEFAULT_HEIGHT = 48;
 // const INDICATOR_INSET = Spacings.s4;
 const INDICATOR_INSET = 6;
@@ -146,7 +146,7 @@ class TabBar extends PureComponent {
     this._indicatorTransitionStyle = {
       // width: this._indicatorWidth,
       width: DEFAULT_PILL_WIDTH,
-      left: this._indicatorOffset - 2
+      left: this._indicatorOffset
     };
 
     this.state = {
@@ -347,7 +347,7 @@ class TabBar extends PureComponent {
             activeBackgroundColor={activeBackgroundColor}
             key={item.label}
             // width={this._itemsWidths[index]}
-            width={DEFAULT_PILL_WIDTH + 6}
+            width={DEFAULT_PILL_WIDTH + 8}
             {...item}
             {...this.context}
             index={index}
