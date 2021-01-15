@@ -146,7 +146,7 @@ class TabBar extends PureComponent {
     this._indicatorTransitionStyle = {
       // width: this._indicatorWidth,
       width: DEFAULT_PILL_WIDTH,
-      left: this._indicatorOffset
+      left: this._indicatorOffset - 2
     };
 
     this.state = {
@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
   selectedIndicator: {
     position: 'absolute',
     bottom: 0,
-    left: -2,
+    left: 0,
     width: DEFAULT_PILL_WIDTH,
     height: 2,
     backgroundColor: Colors.blue30
