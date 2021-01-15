@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
   selectedIndicator: {
     position: 'absolute',
     bottom: 0,
-    left: 0,
+    left: -2,
     width: DEFAULT_PILL_WIDTH,
     height: 2,
     backgroundColor: Colors.blue30
