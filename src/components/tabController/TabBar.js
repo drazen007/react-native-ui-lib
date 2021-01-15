@@ -18,7 +18,7 @@ import {LogService} from '../../services';
 
 const {Code, Value, interpolate, block, set} = Reanimated;
 
-const DEFAULT_PILL_WIDTH = 92;
+const DEFAULT_PILL_WIDTH = 90;
 const DEFAULT_HEIGHT = 48;
 // const INDICATOR_INSET = Spacings.s4;
 const INDICATOR_INSET = 6;
