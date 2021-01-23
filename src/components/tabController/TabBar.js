@@ -21,7 +21,7 @@ const {Code, Value, interpolate, block, set} = Reanimated;
 const DEFAULT_PILL_WIDTH = 90;
 const DEFAULT_HEIGHT = 48;
 // const INDICATOR_INSET = Spacings.s4;
-const INDICATOR_INSET = 6;
+const INDICATOR_INSET = 4;
 
 const DEFAULT_BACKGROUND_COLOR = Colors.white;
 
@@ -139,7 +139,6 @@ class TabBar extends PureComponent {
 
     this._itemsWidths = _.times(itemsCount, () => null);
     // this._itemsOffsets = _.times(itemsCount, () => null);
-    // this._itemsOffsets = -2;
     this._itemsOffsets = 0;
     this._indicatorOffset = new Value(0);
     this._indicatorWidth = new Value(0);
@@ -246,6 +245,8 @@ class TabBar extends PureComponent {
         const offsetChange = Math.max(0, itemOffset - (this.tabBarScrollOffset + this.containerWidth));
         targetOffset = this.tabBarScrollOffset + offsetChange + itemWidth;
       }
+
+      targetOffset = itemOffset; // fix
 
       if (!_.isUndefined(targetOffset)) {
         if (Constants.isRTL && Constants.isAndroid) {
@@ -455,7 +456,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // justifyContent: 'space-between'
     justifyContent: 'flex-start',
-    width: 350
+    width: 360
   },
   tabBarScrollContent: {
     minWidth: Constants.screenWidth
