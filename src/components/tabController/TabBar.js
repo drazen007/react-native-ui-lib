@@ -139,7 +139,8 @@ class TabBar extends PureComponent {
 
     this._itemsWidths = _.times(itemsCount, () => null);
     // this._itemsOffsets = _.times(itemsCount, () => null);
-    this._itemsOffsets = -2;
+    // this._itemsOffsets = -2;
+    this._itemsOffsets = 0;
     this._indicatorOffset = new Value(0);
     this._indicatorWidth = new Value(0);
 
